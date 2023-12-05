@@ -1,0 +1,16 @@
+FROM openjdk:11
+
+# Set the working directory in the container
+WORKDIR /app
+
+COPY target/log-generator-1.0.jar /app/log-generator-1.0.jar
+
+COPY aws.properties /app/aws.properties
+
+# Set AWS credentials and region as environment variables
+ENV AWS_ACCESS_KEY_ID=AKIA3HMPS5VLHHP5XKH6
+ENV AWS_SECRET_ACCESS_KEY=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
+ENV AWS_DEFAULT_REGION=us-east-1
+
+# Run the Java application
+CMD ["java", "-jar", "log-generator-1.0.jar"]
